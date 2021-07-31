@@ -1,0 +1,141 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:hygeia/users/view/Home/widget.home.dart';
+import 'package:hygeia/users/view/RV/rv.dart';
+import 'package:hygeia/users/view/profile/changepassword/widget.changepassword2.dart';
+import 'package:hygeia/users/view/profile/yourProfile/widget.profile.dart';
+import 'package:sizer/sizer.dart';
+
+class NavigationDrawer extends StatefulWidget {
+  NavigationDrawer(this.now);
+  String now;
+  @override
+  _NavigationDrawerState createState() => _NavigationDrawerState();
+}
+
+class _NavigationDrawerState extends State<NavigationDrawer> {
+  @override
+  Widget build(BuildContext context) {
+    var mesbools = {
+      'home': this.widget.now == 'home',
+      'profil': this.widget.now == 'profil',
+      'parametre': this.widget.now == 'parametre',
+      'rvous': this.widget.now == 'rvous'
+    };
+    return Drawer(
+      child: Container(
+        height: 100.h,
+        width: 100.w,
+        color: Colors.white,
+        child: ListView(
+          children: [
+            Container(
+              color: Colors.blue,
+              height: 25.h,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                        boxShadow: [],
+                        shape: BoxShape.circle,
+                        color: Colors.white),
+                    child: CircleAvatar(
+                      backgroundImage: AssetImage("assets/images/homme.jpg"),
+                      maxRadius: 5.5.h,
+                      minRadius: 5.5.h,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 2.h,
+                  ),
+                  Text(
+                    "Hanani Fetheddine",
+                    style: GoogleFonts.inter(
+                        color: Color(0xffF3F5F4),
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500),
+                  )
+                ],
+              ),
+            ),
+            SizedBox(height: 4.h),
+            mylisttile("home.svg", false, "Home", mesbools['home'], () {
+              Navigator.pushReplacement(
+                  context, MaterialPageRoute(builder: (context) => Home()));
+            }),
+            mylisttile("clock.svg", false, "Rendez-vous", mesbools['rvous'],
+                () {
+              Navigator.pushReplacement(
+                  context, MaterialPageRoute(builder: (context) => rvous()));
+            }),
+            mylisttile(
+                "settings.svg", false, "paramètre", mesbools['parametre'], () {
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => ChangePassword2()));
+            }),
+            mylisttile("user.svg", true, "Profil", mesbools['profil'], () {
+              Navigator.pushReplacement(
+                  context, MaterialPageRoute(builder: (context) => Profile()));
+            }),
+            Divider(
+              thickness: 1,
+              height: 4.h,
+              endIndent: 4.h,
+              indent: 4.h,
+            ),
+            mylisttile("logout.svg", true, "log out", false, () {}),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class mylisttile extends StatelessWidget {
+  mylisttile(this.icon, this.kicon, this.title, this.selected, this.ontap);
+  String icon;
+  bool kicon;
+  String title;
+  bool selected;
+  Function ontap;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: ontap,
+      child: Container(
+        decoration: selected == true
+            ? BoxDecoration(color: Colors.blue.withOpacity(0.1))
+            : null,
+        width: double.infinity,
+        margin: EdgeInsets.symmetric(
+            horizontal: 0, vertical: selected == true ? 1.h : 0.h),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 9.w, vertical: 1.2.h),
+          child: Row(
+            children: [
+              SvgPicture.asset(
+                "assets/icons/" + icon,
+                color: selected != true ? Colors.black : Colors.blue,
+                height: 2.7.h,
+                width: 2.7.w,
+              ),
+              SizedBox(width: 8.w),
+              Text(
+                title,
+                style: GoogleFonts.poppins(
+                    color: selected != true ? Colors.black : Colors.blue,
+                    fontSize: 17,
+                    fontWeight:
+                        selected == true ? FontWeight.w400 : FontWeight.w400),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
