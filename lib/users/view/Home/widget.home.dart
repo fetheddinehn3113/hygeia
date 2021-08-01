@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hygeia/users/view/drawer/widget.drawer.dart';
 import 'package:sizer/sizer.dart';
@@ -167,7 +168,7 @@ class _HomeState extends State<Home> {
                 ],
               ),
               SizedBox(
-                height: 3.h,
+                height: 5.h,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -189,23 +190,31 @@ class _HomeState extends State<Home> {
                 ],
               ),
               SizedBox(
-                height: 3.h,
+                height: 2.h,
               ),
-              MyStack("homme.jpg", "Merabet", "mer 14/05/2020", "personel"),
+              MyStack("doct.jpg", "Merabet", "mer 14/05/2020", "personel", 0),
+              MyStack("doct.jpg", "Merabet", "mer 14/05/2020", "personel", 1),
+              MyStack("doct.jpg", "Merabet", "mer 14/05/2020", "personel", 2),
             ],
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Color(0xff01559C),
+        child: Icon(Icons.add_rounded, size: 5.h),
+        onPressed: () {},
       ),
     ));
   }
 }
 
 class MyStack extends StatelessWidget {
-  MyStack(this.ImageAsset, this.Doctor, this.date, this.genre);
+  MyStack(this.ImageAsset, this.Doctor, this.date, this.genre, this.situation);
   String ImageAsset;
   String Doctor;
   String date;
   String genre;
+  int situation;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -254,7 +263,7 @@ class MyStack extends StatelessWidget {
                                       fontWeight: FontWeight.w500)),
                               Text(genre,
                                   style: GoogleFonts.poppins(
-                                      color: Color(0xff3A7AFE),
+                                      color: Colors.black,
                                       fontSize: 12,
                                       fontWeight: FontWeight.w500)),
                             ],
@@ -263,11 +272,48 @@ class MyStack extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Icon(Icons.arrow_forward_ios_outlined)
+                  Icon(Icons.arrow_forward_ios_rounded)
                 ],
               ),
-            ))
+            )),
+        Positioned(
+          top: 0,
+          right: 0,
+          child: Builder(builder: (BuildContext context) {
+            switch (situation) {
+              case 0:
+                {
+                  return SvgPicture.asset(
+                    "assets/icons/refus.svg",
+                    height: 2.7.h,
+                    width: 2.7.w,
+                  );
+                  break;
+                }
+              case 1:
+                {
+                  return SvgPicture.asset(
+                    "assets/icons/accepte.svg",
+                    height: 2.7.h,
+                    width: 2.7.w,
+                  );
+                  break;
+                }
+              default:
+                {
+                  return SvgPicture.asset(
+                    "assets/icons/timing.svg",
+                    height: 2.7.h,
+                    width: 2.7.w,
+                  );
+                }
+            }
+          }),
+        ),
       ],
     );
   }
 }
+// situation == 1
+// ? "assets/icons/accepte.svg"
+//     : "assets/icons/refuse.svg",
