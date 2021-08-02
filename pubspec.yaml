@@ -39,6 +39,7 @@ dependencies:
   top_snackbar_flutter: ^1.0.0
   sizer: ^2.0.13
   device_preview: ^0.7.4
+  showcaseview: ^1.1.0
 
 
 dev_dependencies:

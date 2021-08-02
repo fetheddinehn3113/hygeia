@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hygeia/users/view/drawer/widget.drawer.dart';
+import 'package:hygeia/users/view/examenmedical/widget.examenmedical.dart';
 import 'package:sizer/sizer.dart';
 
 class Home extends StatefulWidget {
@@ -19,14 +20,14 @@ class _HomeState extends State<Home> {
       backgroundColor: Color(0xffF3F5F4),
       drawer: NavigationDrawer("home"),
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: IconThemeData(color: Colors.white),
         title: Text('Home',
             style: GoogleFonts.inter(
-                color: Colors.black,
+                color: Colors.white,
                 fontSize: 22,
                 fontWeight: FontWeight.w500)),
         centerTitle: true,
-        backgroundColor: Color(0xffF3F5F4),
+        backgroundColor: Color(0xFF3A7AFE),
         elevation: 0,
       ),
       body: SingleChildScrollView(
@@ -109,53 +110,61 @@ class _HomeState extends State<Home> {
                             fontSize: 17, fontWeight: FontWeight.bold),
                       ),
                       SizedBox(height: 3.h),
-                      Container(
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(1.h),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.5),
-                                spreadRadius: 1,
-                                blurRadius: 4,
-                                offset:
-                                    Offset(0, 0), // changes position of shadow
-                              ),
-                            ],
-                            color: Color(0xff3A7AFE)),
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 10.w, vertical: 3.h),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "- ordonnance",
-                                style: GoogleFonts.poppins(
-                                  color: Colors.white,
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.normal,
+                      InkWell(
+                        onTap: () {
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ExamenMedical()));
+                        },
+                        child: Container(
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(1.h),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  spreadRadius: 1,
+                                  blurRadius: 4,
+                                  offset: Offset(
+                                      0, 0), // changes position of shadow
                                 ),
-                              ),
-                              SizedBox(height: 1.h),
-                              Text(
-                                "- bilans",
-                                style: GoogleFonts.poppins(
-                                  color: Colors.white,
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.normal,
+                              ],
+                              color: Color(0xff3A7AFE)),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 10.w, vertical: 3.h),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "- Ordonnances",
+                                  style: GoogleFonts.poppins(
+                                    color: Colors.white,
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.normal,
+                                  ),
                                 ),
-                              ),
-                              SizedBox(height: 1.h),
-                              Text(
-                                "- orientation",
-                                style: GoogleFonts.poppins(
-                                  color: Colors.white,
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.normal,
+                                SizedBox(height: 1.h),
+                                Text(
+                                  "- Bilans",
+                                  style: GoogleFonts.poppins(
+                                    color: Colors.white,
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.normal,
+                                  ),
                                 ),
-                              ),
-                            ],
+                                SizedBox(height: 1.h),
+                                Text(
+                                  "- Orientations",
+                                  style: GoogleFonts.poppins(
+                                    color: Colors.white,
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -174,7 +183,7 @@ class _HomeState extends State<Home> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'vos rendez-vous :',
+                    'Vos rendez-vous :',
                     style: GoogleFonts.inter(
                         fontSize: 17, fontWeight: FontWeight.bold),
                   ),
@@ -314,6 +323,3 @@ class MyStack extends StatelessWidget {
     );
   }
 }
-// situation == 1
-// ? "assets/icons/accepte.svg"
-//     : "assets/icons/refuse.svg",

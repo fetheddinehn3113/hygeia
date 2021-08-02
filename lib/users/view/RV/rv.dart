@@ -14,9 +14,7 @@ class _rvousState extends State<rvous> {
     return SafeArea(
         child: Scaffold(
       drawer: NavigationDrawer("rvous"),
-      appBar: AppBar(
-        backgroundColor: Colors.blue,
-      ),
+      appBar: AppBar(),
     ));
   }
 }

@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hygeia/users/view/Home/widget.home.dart';
 import 'package:hygeia/users/view/RV/rv.dart';
+import 'package:hygeia/users/view/examenmedical/widget.examenmedical.dart';
 import 'package:hygeia/users/view/profile/changepassword/widget.changepassword2.dart';
 import 'package:hygeia/users/view/profile/yourProfile/widget.profile.dart';
 import 'package:sizer/sizer.dart';
@@ -22,7 +23,8 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
       'home': this.widget.now == 'home',
       'profil': this.widget.now == 'profil',
       'parametre': this.widget.now == 'parametre',
-      'rvous': this.widget.now == 'rvous'
+      'rvous': this.widget.now == 'rvous',
+      'emedic': this.widget.now == 'emedic'
     };
     return Drawer(
       child: Container(
@@ -62,21 +64,24 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
               ),
             ),
             SizedBox(height: 4.h),
-            mylisttile("home.svg", false, "Home", mesbools['home'], () {
+            mylisttile("home.svg", "Home", mesbools['home'], () {
               Navigator.pushReplacement(
                   context, MaterialPageRoute(builder: (context) => Home()));
             }),
-            mylisttile("clock.svg", false, "Rendez-vous", mesbools['rvous'],
-                () {
+            mylisttile(
+                "stethoscope.svg", "Examens médicaux", mesbools['emedic'], () {
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => ExamenMedical()));
+            }),
+            mylisttile("clock.svg", "Rendez-vous", mesbools['rvous'], () {
               Navigator.pushReplacement(
                   context, MaterialPageRoute(builder: (context) => rvous()));
             }),
-            mylisttile(
-                "settings.svg", false, "paramètre", mesbools['parametre'], () {
+            mylisttile("settings.svg", "paramètre", mesbools['parametre'], () {
               Navigator.pushReplacement(context,
                   MaterialPageRoute(builder: (context) => ChangePassword2()));
             }),
-            mylisttile("user.svg", true, "Profil", mesbools['profil'], () {
+            mylisttile("user.svg", "Profil", mesbools['profil'], () {
               Navigator.pushReplacement(
                   context, MaterialPageRoute(builder: (context) => Profile()));
             }),
@@ -86,7 +91,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
               endIndent: 4.h,
               indent: 4.h,
             ),
-            mylisttile("logout.svg", true, "log out", false, () {}),
+            mylisttile("logout.svg", "log out", false, () {}),
           ],
         ),
       ),
@@ -95,9 +100,8 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
 }
 
 class mylisttile extends StatelessWidget {
-  mylisttile(this.icon, this.kicon, this.title, this.selected, this.ontap);
+  mylisttile(this.icon, this.title, this.selected, this.ontap);
   String icon;
-  bool kicon;
   String title;
   bool selected;
   Function ontap;
@@ -120,15 +124,15 @@ class mylisttile extends StatelessWidget {
               SvgPicture.asset(
                 "assets/icons/" + icon,
                 color: selected != true ? Colors.black : Colors.blue,
-                height: 2.7.h,
-                width: 2.7.w,
+                height: 2.4.h,
+                width: 2.4.w,
               ),
               SizedBox(width: 8.w),
               Text(
                 title,
                 style: GoogleFonts.poppins(
                     color: selected != true ? Colors.black : Colors.blue,
-                    fontSize: 17,
+                    fontSize: 16,
                     fontWeight:
                         selected == true ? FontWeight.w400 : FontWeight.w400),
               ),

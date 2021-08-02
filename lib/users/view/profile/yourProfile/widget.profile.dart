@@ -22,7 +22,7 @@ class _ProfileState extends State<Profile> {
               style:
                   GoogleFonts.inter(fontSize: 21, fontWeight: FontWeight.w500)),
           centerTitle: true,
-          elevation: 20,
+          elevation: 05,
         ),
         body: Container(
           height: 100.h,
@@ -99,7 +99,7 @@ class _ProfileState extends State<Profile> {
                         boxShadow: [
                           BoxShadow(
                             color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 1,
+                            spreadRadius: 0.5,
                             blurRadius: 7,
                             offset: Offset(0, 3), // changes position of shadow
                           ),

@@ -46,7 +46,7 @@ class _ChangePassword2State extends State<ChangePassword2> {
       body: Stack(
         children: [
           Container(
-            height: height * 0.7,
+            height: height,
             decoration: BoxDecoration(
                 color: Colors.blue,
                 borderRadius: new BorderRadius.only(
