@@ -16,13 +16,11 @@ class _ExamenMedicalState extends State<ExamenMedical> {
   TextEditingController medecinControlleur;
   TextEditingController dateControlleur;
   TextEditingController typeControlleur;
-  GlobalKey<FormState> _formKey;
   @override
   void initState() {
     medecinControlleur = TextEditingController();
     dateControlleur = TextEditingController();
     typeControlleur = TextEditingController();
-    _formKey = GlobalKey<FormState>();
   }
 
   @override

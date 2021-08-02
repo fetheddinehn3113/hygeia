@@ -201,9 +201,12 @@ class _HomeState extends State<Home> {
               SizedBox(
                 height: 2.h,
               ),
-              MyStack("doct.jpg", "Merabet", "mer 14/05/2020", "personel", 0),
-              MyStack("doct.jpg", "Merabet", "mer 14/05/2020", "personel", 1),
-              MyStack("doct.jpg", "Merabet", "mer 14/05/2020", "personel", 2),
+              MyStack("doct.jpg", "Merabet", "mer 14/05/2020", "personel", 0,
+                  () => onpresscard()),
+              MyStack("doct.jpg", "Merabet", "mer 14/05/2020", "personel", 1,
+                  () => onpresscard()),
+              MyStack("doct.jpg", "Merabet", "mer 14/05/2020", "personel", 2,
+                  () => onpresscard()),
             ],
           ),
         ),
@@ -215,111 +218,270 @@ class _HomeState extends State<Home> {
       ),
     ));
   }
+
+  onpresscard() {
+    showModalBottomSheet(
+        context: context,
+        builder: (context) {
+          return Container(
+            color: Color(0xff737373),
+            child: Container(
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(12),
+                    topRight: Radius.circular(12),
+                  )),
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 4.h, horizontal: 10.w),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Votre rendez-vsous",
+                      style: GoogleFonts.inter(
+                          fontSize: 25, fontWeight: FontWeight.w700),
+                    ),
+                    SizedBox(
+                      height: 2.h,
+                    ),
+                    Text(
+                      "Ce rendez-vous pour vois \nl'avancement de votre cas ,\nnoubliez pas votre bavette",
+                      style: GoogleFonts.poppins(
+                          fontSize: 15, color: Color(0xff707070)),
+                    ),
+                    SizedBox(height: 4.h),
+                    Row(
+                      children: [
+                        SvgPicture.asset(
+                          "assets/icons/rendezv.svg",
+                          color: Colors.black,
+                          height: 4.h,
+                          width: 4.w,
+                        ),
+                        SizedBox(width: 6.w),
+                        Text(
+                          "14/9/2021",
+                          style: GoogleFonts.inter(
+                              fontSize: 17, fontWeight: FontWeight.normal),
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 2.h,
+                    ),
+                    Row(
+                      children: [
+                        SvgPicture.asset(
+                          "assets/icons/sermed.svg",
+                          color: Colors.black,
+                          height: 2.8.h,
+                          width: 2.8.w,
+                        ),
+                        SizedBox(width: 9.w),
+                        Text(
+                          "Dr Merabet",
+                          style: GoogleFonts.inter(
+                              fontSize: 17, fontWeight: FontWeight.normal),
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 3.h,
+                    ),
+                    Row(
+                      children: [
+                        SvgPicture.asset(
+                          "assets/icons/accetblack.svg",
+                          height: 2.8.h,
+                          width: 2.8.w,
+                        ),
+                        SizedBox(width: 9.w),
+                        Text(
+                          "accepté",
+                          style: GoogleFonts.inter(
+                              fontSize: 17, fontWeight: FontWeight.normal),
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 8.h,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        InkWell(
+                            child: Container(
+                          width: 35.w,
+                          height: 6.5.h,
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.16),
+                                blurRadius: 10,
+                                spreadRadius: 1,
+                                offset: Offset(0.0, 10),
+                              ),
+                            ],
+                            color: Color(0xffFF002B),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Center(
+                              child: Text(
+                            'Supprimer',
+                            style: GoogleFonts.poppins(
+                                color: Colors.white,
+                                fontSize: 13.4.sp,
+                                fontWeight: FontWeight.w500),
+                          )),
+                        )),
+                        SizedBox(
+                          width: 5.w,
+                        ),
+                        InkWell(
+                            child: Container(
+                          width: 35.w,
+                          height: 6.5.h,
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.16),
+                                blurRadius: 10,
+                                spreadRadius: 1,
+                                offset: Offset(0.0, 10),
+                              ),
+                            ],
+                            color: Color(0xffF7DB4C),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Center(
+                              child: Text(
+                            'Modifier',
+                            style: GoogleFonts.poppins(
+                                color: Colors.black,
+                                fontSize: 13.4.sp,
+                                fontWeight: FontWeight.w500),
+                          )),
+                        )),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ),
+          );
+        });
+  }
 }
 
 class MyStack extends StatelessWidget {
-  MyStack(this.ImageAsset, this.Doctor, this.date, this.genre, this.situation);
+  MyStack(this.ImageAsset, this.Doctor, this.date, this.genre, this.situation,
+      this.ontap);
   String ImageAsset;
   String Doctor;
   String date;
   String genre;
   int situation;
+  Function ontap;
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-            width: double.infinity,
-            margin: EdgeInsets.symmetric(vertical: 1.h),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(9),
-                color: Color(0x153DC7C9)),
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 7.w),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 3.h),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: 15.w,
-                          height: 8.h,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(0.5.h),
-                              image: DecorationImage(
-                                  image:
-                                      AssetImage("assets/images/" + ImageAsset),
-                                  fit: BoxFit.cover)),
-                        ),
-                        SizedBox(width: 5.w),
-                        Container(
-                          height: 8.h,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text("Dr. " + Doctor,
-                                  style: GoogleFonts.poppins(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w500)),
-                              Text(date,
-                                  style: GoogleFonts.poppins(
-                                      color: Color(0xff707070),
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w500)),
-                              Text(genre,
-                                  style: GoogleFonts.poppins(
-                                      color: Colors.black,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w500)),
-                            ],
+    return InkWell(
+      onTap: ontap,
+      child: Stack(
+        children: [
+          Container(
+              width: double.infinity,
+              margin: EdgeInsets.symmetric(vertical: 1.h),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(9),
+                  color: Color(0x153DC7C9)),
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 7.w),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: 3.h),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            width: 15.w,
+                            height: 8.h,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(0.5.h),
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                        "assets/images/" + ImageAsset),
+                                    fit: BoxFit.cover)),
                           ),
-                        )
-                      ],
+                          SizedBox(width: 5.w),
+                          Container(
+                            height: 8.h,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text("Dr. " + Doctor,
+                                    style: GoogleFonts.poppins(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w500)),
+                                Text(date,
+                                    style: GoogleFonts.poppins(
+                                        color: Color(0xff707070),
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w500)),
+                                Text(genre,
+                                    style: GoogleFonts.poppins(
+                                        color: Colors.black,
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w500)),
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
                     ),
-                  ),
-                  Icon(Icons.arrow_forward_ios_rounded)
-                ],
-              ),
-            )),
-        Positioned(
-          top: 0,
-          right: 0,
-          child: Builder(builder: (BuildContext context) {
-            switch (situation) {
-              case 0:
-                {
-                  return SvgPicture.asset(
-                    "assets/icons/refus.svg",
-                    height: 2.7.h,
-                    width: 2.7.w,
-                  );
-                  break;
-                }
-              case 1:
-                {
-                  return SvgPicture.asset(
-                    "assets/icons/accepte.svg",
-                    height: 2.7.h,
-                    width: 2.7.w,
-                  );
-                  break;
-                }
-              default:
-                {
-                  return SvgPicture.asset(
-                    "assets/icons/timing.svg",
-                    height: 2.7.h,
-                    width: 2.7.w,
-                  );
-                }
-            }
-          }),
-        ),
-      ],
+                    Icon(Icons.arrow_forward_ios_rounded)
+                  ],
+                ),
+              )),
+          Positioned(
+            top: 0,
+            right: 0,
+            child: Builder(builder: (BuildContext context) {
+              switch (situation) {
+                case 0:
+                  {
+                    return SvgPicture.asset(
+                      "assets/icons/refus.svg",
+                      height: 2.7.h,
+                      width: 2.7.w,
+                    );
+                    break;
+                  }
+                case 1:
+                  {
+                    return SvgPicture.asset(
+                      "assets/icons/accepte.svg",
+                      height: 2.7.h,
+                      width: 2.7.w,
+                    );
+                    break;
+                  }
+                default:
+                  {
+                    return SvgPicture.asset(
+                      "assets/icons/timing.svg",
+                      height: 2.7.h,
+                      width: 2.7.w,
+                    );
+                  }
+              }
+            }),
+          ),
+        ],
+      ),
     );
   }
 }
