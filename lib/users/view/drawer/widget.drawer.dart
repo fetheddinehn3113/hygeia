@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hygeia/users/view/Home/widget.home.dart';
 import 'package:hygeia/users/view/RV/rv.dart';
+import 'package:hygeia/users/view/biographie/widget.bio.dart';
 import 'package:hygeia/users/view/examenmedical/widget.examenmedical.dart';
 import 'package:hygeia/users/view/profile/changepassword/widget.changepassword2.dart';
 import 'package:hygeia/users/view/profile/yourProfile/widget.profile.dart';
@@ -24,7 +25,8 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
       'profil': this.widget.now == 'profil',
       'parametre': this.widget.now == 'parametre',
       'rvous': this.widget.now == 'rvous',
-      'emedic': this.widget.now == 'emedic'
+      'emedic': this.widget.now == 'emedic',
+      'bio': this.widget.now == 'bio'
     };
     return Drawer(
       child: Container(
@@ -76,6 +78,10 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
             mylisttile("clock.svg", "Rendez-vous", mesbools['rvous'], () {
               Navigator.pushReplacement(
                   context, MaterialPageRoute(builder: (context) => rvous()));
+            }),
+            mylisttile("bio.svg", "Biographie", mesbools['bio'], () {
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => Biographie()));
             }),
             mylisttile("settings.svg", "paramètre", mesbools['parametre'], () {
               Navigator.pushReplacement(context,

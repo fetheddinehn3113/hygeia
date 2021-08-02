@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hygeia/users/data/const/const.signup.dart';
 import 'package:hygeia/users/view/drawer/widget.drawer.dart';
 import 'package:sizer/sizer.dart';
-import 'package:showcaseview/showcaseview.dart';
 
 class ExamenMedical extends StatefulWidget {
   const ExamenMedical({Key key}) : super(key: key);
