@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import 'package:hygeia/slides/views/widget.slide.dart';
 import 'package:hygeia/users/view/Home/widget.home.dart';
-import 'package:hygeia/users/view/profile/yourProfile/widget.profile.dart';
+import 'package:hygeia/users/view/prendredecision.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:after_layout/after_layout.dart';
 import 'package:sizer/sizer.dart';
@@ -55,8 +54,8 @@ class _FirstScreenState extends State<FirstScreen>
     }
     bool _seen = (prefs.getBool('seen') ?? false);
     if (_seen) {
-      Navigator.of(context)
-          .pushReplacement(new MaterialPageRoute(builder: (context) => Home()));
+      Navigator.of(context).pushReplacement(
+          new MaterialPageRoute(builder: (context) => prendreDecision()));
     } else {
       await prefs.setBool('seen', true);
       Navigator.of(context).pushReplacement(

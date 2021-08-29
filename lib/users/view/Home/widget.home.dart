@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hygeia/users/view/NouveauRVous/widget.nouveauRVous.dart';
 import 'package:hygeia/users/view/drawer/widget.drawer.dart';
 import 'package:hygeia/users/view/examenmedical/widget.examenmedical.dart';
 import 'package:sizer/sizer.dart';
@@ -214,7 +215,10 @@ class _HomeState extends State<Home> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Color(0xff01559C),
         child: Icon(Icons.add_rounded, size: 5.h),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => NouveauRendezVous()));
+        },
       ),
     ));
   }

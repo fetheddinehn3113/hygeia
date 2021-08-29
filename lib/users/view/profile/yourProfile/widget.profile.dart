@@ -90,7 +90,7 @@ class _ProfileState extends State<Profile> {
                   Text(
                     "HANANI fetheddine",
                     style: GoogleFonts.inter(
-                        fontSize: 30, fontWeight: FontWeight.w500),
+                        fontSize: 30, fontWeight: FontWeight.bold),
                   ),
                   Container(
                     decoration: BoxDecoration(
