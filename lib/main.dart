@@ -54,8 +54,8 @@ class _FirstScreenState extends State<FirstScreen>
     }
     bool _seen = (prefs.getBool('seen') ?? false);
     if (_seen) {
-      Navigator.of(context).pushReplacement(
-          new MaterialPageRoute(builder: (context) => prendreDecision()));
+      Navigator.of(context)
+          .pushReplacement(new MaterialPageRoute(builder: (context) => Home()));
     } else {
       await prefs.setBool('seen', true);
       Navigator.of(context).pushReplacement(

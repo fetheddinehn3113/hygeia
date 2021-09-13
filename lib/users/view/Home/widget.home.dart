@@ -172,9 +172,12 @@ class _HomeState extends State<Home> {
                     ],
                   ),
                   Positioned(
-                      bottom: 0,
-                      right: 10.w,
-                      child: Image.asset("assets/images/docteur.png")),
+                    bottom: 0,
+                    right: 10.w,
+                    child: Image.asset(
+                      "assets/images/docteur.png",
+                    ),
+                  ),
                 ],
               ),
               SizedBox(

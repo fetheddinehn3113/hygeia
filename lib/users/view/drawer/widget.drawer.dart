@@ -6,8 +6,8 @@ import 'package:hygeia/users/view/Home/widget.home.dart';
 import 'package:hygeia/users/view/RV/rv.dart';
 import 'package:hygeia/users/view/biographie/widget.bio.dart';
 import 'package:hygeia/users/view/examenmedical/widget.examenmedical.dart';
-import 'package:hygeia/users/view/profile/changepassword/widget.changepassword2.dart';
 import 'package:hygeia/users/view/profile/yourProfile/widget.profile.dart';
+import 'package:hygeia/users/view/settings/widget.settings.dart';
 import 'package:sizer/sizer.dart';
 
 class NavigationDrawer extends StatefulWidget {
@@ -84,8 +84,8 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                   MaterialPageRoute(builder: (context) => Biographie()));
             }),
             mylisttile("settings.svg", "paramètre", mesbools['parametre'], () {
-              Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => ChangePassword2()));
+              Navigator.pushReplacement(
+                  context, MaterialPageRoute(builder: (context) => Settings()));
             }),
             mylisttile("user.svg", "Profil", mesbools['profil'], () {
               Navigator.pushReplacement(
